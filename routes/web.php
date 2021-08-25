@@ -1,5 +1,7 @@
 <?php
 
+Route::put('admin/plans/{url}', 'Admin\PlanController@update')->name('plans.update');
+Route::get('admin/plans/{url}/edit', 'Admin\PlanController@edit')->name('plans.edit');
 Route::any('admin/plans/search', 'Admin\PlanController@search')->name('plans.search');
 Route::post('admin/plans/', 'Admin\PlanController@store')->name('plans.store');
 Route::get('admin/plans/create', 'Admin\PlanController@create')->name('plans.create');
