@@ -3,6 +3,15 @@
 Route::prefix('admin')
     ->namespace('Admin')
     ->group(function () {
+
+        /**
+         * Routes Details Plan
+         */
+        Route::get('plans/{url}/details', 'DetailPlanController@index')->name('details.plan.index');
+
+        /**
+         * Routes Plans
+         */
         Route::put('plans/{url}', 'PlanController@update')->name('plans.update');
         Route::get('plans/{url}/edit', 'PlanController@edit')->name('plans.edit');
         Route::any('plans/search', 'PlanController@search')->name('plans.search');
@@ -12,6 +21,9 @@ Route::prefix('admin')
         Route::get('plans/{url}', 'PlanController@show')->name('plans.show');
         Route::get('plans', 'PlanController@index')->name('plans.index');
 
+        /**
+         * Home Dashboard
+         */
         Route::get('/', 'PlanController@index')->name('admin.index');
     });
 
