@@ -7,6 +7,7 @@ Route::prefix('admin')
         /**
          * Route Profiles
          */
+        Route::any('profiles/search', 'ACL\ProfileController@search')->name('profiles.search');
         Route::resource('profiles', 'ACL\ProfileController');
 
         /**
