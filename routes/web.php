@@ -5,6 +5,11 @@ Route::prefix('admin')
     ->group(function () {
 
         /**
+         * Route Profiles
+         */
+        Route::resource('profiles', 'ACL\ProfileController');
+
+        /**
          * Routes Details Plan
          */
         Route::delete('plans/{url}/details/{idDetail}', 'DetailPlanController@destroy')->name('details.plan.destroy');
