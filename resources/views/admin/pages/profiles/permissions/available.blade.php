@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', "Permissões do perfil {$profile->name}")
+@section('title', "Permissões disponíveis para o perfil {$profile->name}")
 
 @section('content_header')
 <ol class="breadcrumb">
@@ -8,9 +8,8 @@
     <li class="breadcrumb-item active"><a href="{{ route('profiles.index') }}">Perfis</a></li>
 </ol>
 
-<h1>Permissões do perfil <strong>{{ $profile->name }}</strong></h1>
+<h1>Permissões disponíveis para o perfil <strong>{{ $profile->name }}</strong></h1>
 
-<a href="{{ route('profiles.permissions.available', $profile->id) }}" class="btn btn-dark">ADD NOVA PERMISSÃO</a>
 @stop
 
 @section('content')
@@ -27,21 +26,33 @@
         <table class="table table-condensed">
             <thead>
                 <tr>
+                    <th width="50">#</th>
                     <th>Nome</th>
-                    <th width="250">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($permissions as $permission)
-                <tr>
-                    <td>
-                        {{ $permission->name }}
-                    </td>
-                    <td style="width: 10px;">
-                        <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-info">Edit</a>
-                    </td>
-                </tr>
-                @endforeach
+                <form action="{{ route('profiles.permissions.attach', $profile->id) }}" method="POST">
+                    @csrf
+
+                    @foreach ($permissions as $permission)
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="permissions[]" value="{{ $permission->id }}">
+                        </td>
+                        <td>
+                            {{ $permission->name }}
+                        </td>
+                    </tr>
+                    @endforeach
+
+                    <tr>
+                        <td colspan="500">
+                            @include('admin.includes.alerts')
+
+                            <button type="submit" class="btn btn-success">Vincular</button>
+                        </td>
+                    </tr>
+                </form>
             </tbody>
         </table>
     </div>
