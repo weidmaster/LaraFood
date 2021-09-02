@@ -28,7 +28,6 @@ class TenantService
         return $this->plan->tenants()->create([
             'cnpj' => $data['cnpj'],
             'name' => $data['empresa'],
-            'url' => Str::kebab($data['empresa']),
             'email' => $data['email'],
 
             'subscription' => now(),
