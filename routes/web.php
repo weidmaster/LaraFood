@@ -6,6 +6,12 @@ Route::prefix('admin')
     ->group(function () {
 
         /**
+         * Route Products
+         */
+        Route::any('products/search', 'ProductController@search')->name('products.search');
+        Route::resource('products', 'ProductController');
+
+        /**
          * Route Categories
          */
         Route::any('categories/search', 'CategoryController@search')->name('categories.search');
