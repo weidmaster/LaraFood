@@ -2,7 +2,8 @@
 
 <div class="form-group">
     <label>Nome:</label>
-    <input type="text" name="name" placeholder="Nome:" class="form-control" value="{{ $user->name ?? old('name') }}">
+    <input type="text" name="name" placeholder="Nome:" class="form-control"
+        value="{{ $category->name ?? old('name') }}">
 </div>
 <div class="form-group">
     <label>Descrição:</label>
