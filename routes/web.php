@@ -5,10 +5,6 @@ Route::prefix('admin')
     ->middleware('auth')
     ->group(function () {
 
-        Route::get('test-acl', function () {
-            dd(auth()->user()->isAdmin());
-        });
-
         /**
          * Route Tables
          */
