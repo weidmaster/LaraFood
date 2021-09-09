@@ -253,7 +253,7 @@ return [
         [
             'text' => 'Produtos',
             'url'  => 'admin/products',
-            'icon' => 'fas fa-layer-group'
+            'icon' => 'fas fa-hamburger'
         ],
     ],
 
