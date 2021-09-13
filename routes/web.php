@@ -7,6 +7,11 @@ Route::prefix('admin')
     ->namespace('Admin')
     ->middleware('auth')
     ->group(function () {
+        /**
+         * Route Tenants
+         */
+        Route::any('tenants/search', 'TenantController@search')->name('tenants.search');
+        Route::resource('tenants', 'TenantController');
 
         /**
          * Route Tables
@@ -49,7 +54,6 @@ Route::prefix('admin')
         Route::any('plans/{id}/profiles/create', 'ACL\PlanProfileController@profilesAvailable')->name('plans.profiles.available');
         Route::get('plans/{id}/profiles', 'ACL\PlanProfileController@profiles')->name('plans.profiles');
         Route::get('profiles/{id}/plans', 'ACL\PlanProfileController@plans')->name('profiles.plans');
-
 
         /**
          * Permission x Profile
