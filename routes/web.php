@@ -7,6 +7,13 @@ Route::prefix('admin')
     ->namespace('Admin')
     ->middleware('auth')
     ->group(function () {
+
+        /**
+         * Route Roles
+         */
+        Route::any('roles/search', 'ACL\RoleController@search')->name('roles.search');
+        Route::resource('roles', 'ACL\RoleController');
+
         /**
          * Route Tenants
          */
