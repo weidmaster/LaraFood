@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::prefix('admin')
     ->namespace('Admin')
     ->middleware('auth')
@@ -101,7 +104,7 @@ Route::prefix('admin')
 /**
  * Site
  */
-Route::get('/plan/{ur}', 'Site\SiteController@plan')->name('plan.subscription');
+Route::get('/plan/{url}', 'Site\SiteController@plan')->name('plan.subscription');
 Route::get('/', 'Site\SiteController@index')->name('site.home');
 
 /**
