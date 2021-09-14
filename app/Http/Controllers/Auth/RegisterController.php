@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use Illuminate\Support\Str;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use App\Providers\RouteServiceProvider;
 use App\Services\TenantService;
+use App\Http\Controllers\Controller;
+use App\Tenant\Events\TenantCreated;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use function event;
 
 class RegisterController extends Controller
 {
@@ -74,6 +74,8 @@ class RegisterController extends Controller
 
         $tenantService = app(TenantService::class);
         $user = $tenantService->make($plan, $data);
+
+        event(new TenantCreated($user));
 
         return $user;
     }
