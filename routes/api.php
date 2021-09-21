@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::post('/sanctum/token', 'Api\Auth\AuthClientController@auth');
+
 Route::group([
     'prefix' => 'v1',
     'namespace' => 'Api'
@@ -19,4 +21,5 @@ Route::group([
     Route::get('/products', 'ProductApiController@productsByTenant');
 
     Route::post('/client', 'Auth\RegisterController@store');
+
 });
