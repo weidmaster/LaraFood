@@ -6,5 +6,5 @@ interface CategoryRepositoryInterface
 {
     public function getCategoriesByTenantUuid(string $uuid);
     public function getCategoriesByTenantId(string $idTenant);
-    public function getCategoryByUrl(string $url);
+    public function getCategoryByUuid(string $uuid);
 }
