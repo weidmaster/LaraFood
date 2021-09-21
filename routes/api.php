@@ -8,6 +8,7 @@ Route::group([
     'middleware' => ['auth:sanctum']
 ], function () {
     Route::get('/auth/me', 'Api\Auth\AuthClientController@me');
+    Route::post('/auth/logout', 'Api\Auth\AuthClientController@logout');
 });
 
 Route::group([

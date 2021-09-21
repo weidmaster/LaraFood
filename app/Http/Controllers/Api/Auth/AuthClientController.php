@@ -35,4 +35,14 @@ class AuthClientController extends Controller
 
         return new ClientResource($client);
     }
+
+    public function logout(Request $request)
+    {
+        $client = $request->user();
+
+        // revoke all tokens for this client
+        $client->tokens()->delete();
+
+        return response()->json([], 204);
+    }
 }
