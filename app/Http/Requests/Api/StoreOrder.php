@@ -30,7 +30,7 @@ class StoreOrder extends FormRequest
             ],
             'table' => [
                 'nullable',
-                'exists:table,uuid'
+                'exists:tables,uuid'
             ],
             'comment' => [
                 'nullable',
